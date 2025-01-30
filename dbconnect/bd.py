@@ -4,14 +4,12 @@ miConexion = sqlite3.connect("PrimeraBD")
 
 miCursor = miConexion.cursor()
 
-variosArticulos = [
-    ("Bicicleta", 3000,"DEPORTES"),
-    ("Portatil", 2500,"COMPUTADORAS"),
-    ("Movil", 500, "TELEFONIA"),
-    ("Tablet", 900,"COMPUTADORAS")
-]
+miCursor.execute("SELECT * FROM PRODUCTOS")
 
-miCursor.executemany("INSERT INTO PRODUCTOS VALUES(?, ?, ?)", variosArticulos)
+variosProductos = miCursor.fetchall()
+
+for i in variosProductos:
+    print("Nombre del producto: ", i[0], "Secciòn:",i[2], " Precio: ", i[1])
 
 miConexion.commit()
 miConexion.close()
