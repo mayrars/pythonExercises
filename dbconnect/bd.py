@@ -7,7 +7,7 @@ miCursor = miConexion.cursor()
 miCursor.execute('''
     CREATE TABLE PRODUCTOR (
         CODIGO INTEGER PRIMARY KEY AUTOINCREMENT,
-        NOMBRE VARCHAR(50),
+        NOMBRE VARCHAR(50) UNIQUE,
         PRECIO INTEGER(10),
         SECCION VARCHAR(20)
     )
