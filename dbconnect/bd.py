@@ -4,21 +4,12 @@ miConexion = sqlite3.connect("PrimeraBD")
 
 miCursor = miConexion.cursor()
 
-miCursor.execute('''
-    CREATE TABLE PRODUCTOR (
-        CODIGO INTEGER PRIMARY KEY AUTOINCREMENT,
-        NOMBRE VARCHAR(50) UNIQUE,
-        PRECIO INTEGER(10),
-        SECCION VARCHAR(20)
-    )
-''')
+miCursor.execute('DELETE FROM PRODUCTO WHERE CODIGO=3')
 
-productos = [
-    ("Leche", 1000, "Lácteos"),
-    ("Queso", 1500, "Lácteos"),
-    ("Pan", 2000, "Panadería"),
-    ("Galletas", 500, "Panadería"),
-]
-miCursor.executemany("INSERT INTO PRODUCTOR VALUES (NULL,?,?,?)", productos)
+miCursor.execute('SELECT * FROM PRODUCTO')
+
+productos = miCursor.fetchall()
+print(productos)
+
 miConexion.commit()
 miConexion.close()
