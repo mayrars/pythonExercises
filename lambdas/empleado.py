@@ -15,7 +15,12 @@ listaEmpleado = [
     Empleado("Sofia","Secretaria",4000),
 ]
 
-sueldoAltos = filter(lambda empleado: empleado.sueldo > 6000,listaEmpleado)
+def comision(empleado):
+    if(empleado.sueldo <=5000):
+        empleado.sueldo = empleado.sueldo*1.03
+    return empleado
 
-for empleado in sueldoAltos:
+listaEmpleadoComision = map(comision, listaEmpleado)
+
+for empleado in listaEmpleadoComision:
     print(empleado)
